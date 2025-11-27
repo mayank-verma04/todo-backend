@@ -50,15 +50,14 @@ exports.loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email }).select("+password");
-    console.log(user)
+
     if (!user) {
       return res.status(400).json({
         message: "Invalid email or password",
         success: false,
       });
     }
-
-    const isMatch = await user.comparePassword(password); // true
+    const isMatch = await user.comparePassword(password); // true or false
     if (!isMatch) {
       return res.status(400).json({
         message: "Invalid email or password",

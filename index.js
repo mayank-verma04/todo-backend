@@ -1,12 +1,14 @@
 require("dotenv").config();
 const express = require("express");
-const db = require("./config/db");
+const connectDB = require("./config/db");
 
 const app = express();
 
-
 // Middleware
 app.use(express.json());
+
+// mongo connection
+connectDB();
 
 // Import Routes
 const todoRoutes = require("./routes/todo.routes");

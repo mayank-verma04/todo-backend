@@ -66,6 +66,7 @@ exports.updateTodo = async (req, res) => {
     const todo = await Todo.findOneAndUpdate(
       { _id: req.params.id, userId: req.user._id },
       req.body,
+      console.log(req.body),
       { new: true }
     );
 
